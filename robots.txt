@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://pafipemkosiantar.org/sitemap.xml
+Sitemap: sipafikottanjungbalai.org/sitemap.xml

